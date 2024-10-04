@@ -58,7 +58,11 @@ st.sidebar.markdown(
     """
     ### Wanna know how it works?
     [Go to the link provided](https://github.com/lakshay-chaudhary/my_fast_api)  
-    You can view the code, explore the models used, and moreover you can contribute to fine-tuning parameters :)
+    You can view the code, explore the models used, and moreover you can contribute to fine-tuning parameters :)  
+    
+    If its not responding back it would must be streamlit hosting is not working fine or render API might have worn out and require rehosting . 
+    
+    Please check out link provided it has video demonstration of working site as well .
     """,
     unsafe_allow_html=True
 )
@@ -96,7 +100,7 @@ if st.button("Segment Customer"):
     # Make a POST request to the FastAPI backend
     try:
         response = requests.post("https://my-fast-api-2.onrender.com/predict/", json=customer_data)
-        response.raise_for_status()  # Raise an error for bad responses
+        response.raise_for_status() 
         
         # Display the predicted cluster
         result = response.json()
@@ -111,6 +115,5 @@ if st.button("Segment Customer"):
 st.subheader("Upload Customer Data via CSV (For Show)")
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 
-# If a file is uploaded, show an error message (since we are not handling CSV processing yet)
 if uploaded_file is not None:
     st.error("Error occurred while uploading the file. Please refer to single customer detail input only.")
